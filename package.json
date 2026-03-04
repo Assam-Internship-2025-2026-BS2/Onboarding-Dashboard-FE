@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
   "name": "stagedropoff",
+=======
+  "name": "demo-onboarding-dashboard",
+>>>>>>> origin/saurab-fe
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,8 +14,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
+<<<<<<< HEAD
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
+=======
+    "lucide-react": "^0.576.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-icons": "^5.5.0",
+>>>>>>> origin/saurab-fe
     "react-router-dom": "^7.13.1"
   },
   "devDependencies": {
@@ -25,4 +36,8 @@
     "globals": "^16.5.0",
     "vite": "^7.3.1"
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin/saurab-fe
