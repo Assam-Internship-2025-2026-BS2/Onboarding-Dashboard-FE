@@ -1,27 +1,30 @@
 import { useEffect, useState } from "react";
-import { fetchInsights } from "./InsightsService";
-import InsightsSection from "./InsightsSection";
+import { fetchInsights } from "./InsightService";
+import InsightsSection from "./InsightSection";
 
 function Dashboard() {
   const [insights, setInsights] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const loadInsights = async () => {
-      const data = await fetchInsights();
+    const loadData = async () => {
+      try {
+        const data = await fetchInsights();
 
-      const mapped = data.map((item) => ({
-        ...item,
-        onClick: () => {
-          if (item.redirectUrl) {
-            window.location.href = item.redirectUrl;
-          }
-        }
-      }));
+        const mapped = data.map((item) => ({
+          ...item,
+          onClick: () => (window.location.href = item.redirectUrl),
+        }));
 
-      setInsights(mapped);
+        setInsights(mapped);
+      } catch (err) {
+        console.error("Error fetching insights:", err);
+      } finally {
+        setLoading(false);
+      }
     };
 
-    loadInsights();
+    loadData();
   }, []);
 
   const criticalCount = insights.filter(
@@ -31,10 +34,14 @@ function Dashboard() {
   return (
     <div className="dashboard-layout">
       <div className="dashboard-left">
-        <InsightsSection
-          insights={insights}
-          criticalCount={criticalCount}
-        />
+        {loading ? (
+          <div>Loading insights...</div>
+        ) : (
+          <InsightsSection
+            insights={insights}
+            criticalCount={criticalCount}
+          />
+        )}
       </div>
 
       <div className="dashboard-right">

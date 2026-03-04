@@ -6,11 +6,12 @@ function InsightCard({
   extraInfo,
   severity,
   ctaLabel,
-  onClick
+  onClick,
 }) {
   return (
     <div className={`insight-card insight-${severity}`}>
-
+      
+      {/* Top Grid */}
       <div className="card-grid">
 
         <div>
@@ -18,12 +19,15 @@ function InsightCard({
           <div className="metric-value">{metric}</div>
         </div>
 
-        <span className={`impact-pill impact-${severity}`}>
-          {impact}
-        </span>
+        <div className="impact-wrapper">
+          <span className={`impact-pill impact-${severity}`}>
+            {impact}
+          </span>
+        </div>
 
       </div>
 
+      {/* Description */}
       <p className="description">{description}</p>
 
       {extraInfo && (
