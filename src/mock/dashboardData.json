@@ -16,11 +16,10 @@
             { "text": "Credit Card conversion decreased 6.2%", "severity": "CRITICAL" },
             { "text": "Video KYC failures increased 18%", "severity": "CRITICAL" },
             { "text": "Personal Loan SLA breached — 2,180 cases", "severity": "WARNING" },
-            { "text": "Home Loan approval rate dropped 4.1%", "severity": "CRITICAL" },
-            { "text": "KYC drop-offs increased in South Zone", "severity": "WARNING" },
-            { "text": "SME onboarding delayed > 48 hrs", "severity": "WARNING" }
+            { "text": "Home Loan approval rate dropped 4.1%", "severity": "CRITICAL" }
           ]
         },
+
         "kpi_cards": {
           "onboarding_started": {
             "unit": "count",
@@ -32,6 +31,7 @@
               { "label": "In Progress", "value": 4429 }
             ]
           },
+
           "onboarding_completed": {
             "unit": "count",
             "value": 6891,
@@ -42,6 +42,7 @@
               { "label": "Approval Rate", "value": 74.2, "unit": "percentage" }
             ]
           },
+
           "avg_completion_time": {
             "unit": "time",
             "value_seconds": 1704,
@@ -52,6 +53,7 @@
               { "label": "Max (Home Loan)", "value_seconds": 2820 }
             ]
           },
+
           "pipeline_at_risk": {
             "unit": "currency_cr",
             "value": 38.6,
@@ -65,201 +67,60 @@
             ]
           }
         },
+
+        "key_insights": [
+          {
+            "product": "Credit Card",
+            "title": "Conversion Drop",
+            "impact": "-6.2%",
+            "description": "Drop concentrated at Video KYC stage · Android devices",
+            "severity": "critical"
+          },
+          {
+            "product": "Video KYC",
+            "title": "Failure Spike",
+            "impact": "14.8%",
+            "description": "Agent unavailable + timeout errors",
+            "severity": "critical"
+          },
+          {
+            "product": "Personal Loan",
+            "title": "SLA Breach",
+            "impact": "2,180",
+            "description": "Cases delayed at underwriting · Avg delay 6 hrs",
+            "severity": "warning"
+          }
+        ],
+
+        "stage_drop_matrix": {
+          "stages": [
+            "OTP Verify",
+            "CKYC / KYC",
+            "Doc Upload",
+            "Eligibility",
+            "Underwriting",
+            "Approval"
+          ],
+
+          "products": [
+            "Credit Card",
+            "Personal Loan",
+            "Savings Acc",
+            "Home Loan",
+            "Auto Loan"
+          ],
+
+          "values": [
+            [8,5,4,6,5],
+            [24,12,8,15,9],
+            [12,15,18,20,22],
+            [18,10,6,28,12],
+            [6,22,3,18,8],
+            [5,8,2,12,4]
+          ]
+        },
+
         "data_as_of_timestamp": "2026-03-02T12:00:00"
-      }
-    },
-
-    {
-      "filters_applied": {
-        "time_range": "Today",
-        "channel": "Mobile App",
-        "region": "North Zone",
-        "segment": "Retail"
-      },
-      "data": {
-        "overall_health": {
-          "status": "WATCH",
-          "critical_products": 4,
-          "message": "4 products showing risk signals",
-          "alerts": [
-            { "text": "Home Loan failures increased significantly", "severity": "CRITICAL" },
-            { "text": "Credit Card SLA breached — 176 cases", "severity": "WARNING" },
-            { "text": "KYC rejection rate increased 3.2%", "severity": "CRITICAL" },
-            { "text": "Retail onboarding stuck > 24 hrs", "severity": "WARNING" }
-          ]
-        },
-        "kpi_cards": {
-          "onboarding_started": {
-            "unit": "count",
-            "value": 4899,
-            "trend": { "delta_percentage": 1.1, "direction": "UP", "comparison_label": "vs previous period" },
-            "sparkline": [4700,4750,4800,4850,4880,4899],
-            "sub_metrics": [
-              { "label": "Submitted", "value": 3092 },
-              { "label": "In Progress", "value": 1807 }
-            ]
-          },
-          "onboarding_completed": {
-            "unit": "count",
-            "value": 3227,
-            "trend": { "delta_percentage": 0.8, "direction": "UP", "comparison_label": "vs previous period" },
-            "sparkline": [3100,3150,3180,3200,3215,3227],
-            "sub_metrics": [
-              { "label": "Conversion Rate", "value": 65.87, "unit": "percentage" },
-              { "label": "Approval Rate", "value": 67.03, "unit": "percentage" }
-            ]
-          },
-          "avg_completion_time": {
-            "unit": "time",
-            "value_seconds": 1980,
-            "trend": { "delta_seconds": 120, "direction": "UP", "comparison_label": "vs previous period" },
-            "sparkline": [1800,1850,1900,1950,1970,1980],
-            "sub_metrics": [
-              { "label": "SLA Target", "value_seconds": 1400 },
-              { "label": "Max (Home Loan)", "value_seconds": 2700 }
-            ]
-          },
-          "pipeline_at_risk": {
-            "unit": "currency_cr",
-            "value": 15.28,
-            "risk_threshold_percentage": 20,
-            "trend": { "delta_value": 1.4, "direction": "UP", "comparison_label": "vs previous period" },
-            "sparkline": [13.2,13.8,14.1,14.6,15,15.28],
-            "percentage_of_total_pipeline": 18.86,
-            "sub_metrics": [
-              { "label": "SLA Breached", "value": 406 },
-              { "label": "Stuck >24h", "value": 196 }
-            ]
-          }
-        },
-        "data_as_of_timestamp": "2026-03-02T11:42:57"
-      }
-    },
-
-    {
-      "filters_applied": {
-        "time_range": "Yesterday",
-        "channel": "Mobile App",
-        "region": "South Zone",
-        "segment": "Retail"
-      },
-      "data": {
-        "overall_health": {
-          "status": "WATCH",
-          "critical_products": 2,
-          "message": "2 products showing risk signals",
-          "alerts": [
-            { "text": "Personal Loan SLA breached — 149 cases", "severity": "WARNING" },
-            { "text": "Credit Card failures increased significantly", "severity": "CRITICAL" }
-          ]
-        },
-        "kpi_cards": {
-          "onboarding_started": {
-            "unit": "count",
-            "value": 4959,
-            "trend": { "delta_percentage": -1.2, "direction": "DOWN", "comparison_label": "vs previous period" },
-            "sparkline": [5100,5050,5000,4980,4970,4959],
-            "sub_metrics": [
-              { "label": "Submitted", "value": 2999 },
-              { "label": "In Progress", "value": 1960 }
-            ]
-          },
-          "onboarding_completed": {
-            "unit": "count",
-            "value": 2567,
-            "trend": { "delta_percentage": -0.6, "direction": "DOWN", "comparison_label": "vs previous period" },
-            "sparkline": [2700,2680,2650,2620,2590,2567],
-            "sub_metrics": [
-              { "label": "Conversion Rate", "value": 51.76, "unit": "percentage" },
-              { "label": "Approval Rate", "value": 70.86, "unit": "percentage" }
-            ]
-          },
-          "avg_completion_time": {
-            "unit": "time",
-            "value_seconds": 1560,
-            "trend": { "delta_seconds": -120, "direction": "DOWN", "comparison_label": "vs previous period" },
-            "sparkline": [1680,1650,1620,1600,1580,1560],
-            "sub_metrics": [
-              { "label": "SLA Target", "value_seconds": 1000 },
-              { "label": "Max (Home Loan)", "value_seconds": 2700 }
-            ]
-          },
-          "pipeline_at_risk": {
-            "unit": "currency_cr",
-            "value": 21.08,
-            "risk_threshold_percentage": 20,
-            "trend": { "delta_value": -1.8, "direction": "DOWN", "comparison_label": "vs previous period" },
-            "sparkline": [24.5,23.8,22.9,22.0,21.5,21.08],
-            "percentage_of_total_pipeline": 25.4,
-            "sub_metrics": [
-              { "label": "SLA Breached", "value": 285 },
-              { "label": "Stuck >24h", "value": 185 }
-            ]
-          }
-        },
-        "data_as_of_timestamp": "2026-03-02T11:48:30"
-      }
-    },
-
-    {
-      "filters_applied": {
-        "time_range": "Last 30 Days",
-        "channel": "All Channels",
-        "region": "All Regions",
-        "segment": "All Segments"
-      },
-      "data": {
-        "overall_health": {
-          "status": "HEALTHY",
-          "critical_products": 0,
-          "message": "Portfolio operating within normal thresholds",
-          "alerts": []
-        },
-        "kpi_cards": {
-          "onboarding_started": {
-            "unit": "count",
-            "value": 40210,
-            "trend": { "delta_percentage": 6.5, "direction": "UP", "comparison_label": "vs previous period" },
-            "sparkline": [35000,36000,37000,38000,39500,40210],
-            "sub_metrics": [
-              { "label": "Submitted", "value": 27600 },
-              { "label": "In Progress", "value": 12610 }
-            ]
-          },
-          "onboarding_completed": {
-            "unit": "count",
-            "value": 31200,
-            "trend": { "delta_percentage": 5.9, "direction": "UP", "comparison_label": "vs previous period" },
-            "sparkline": [28000,29000,30000,30500,31000,31200],
-            "sub_metrics": [
-              { "label": "Conversion Rate", "value": 77.6, "unit": "percentage" },
-              { "label": "Approval Rate", "value": 82.3, "unit": "percentage" }
-            ]
-          },
-          "avg_completion_time": {
-            "unit": "time",
-            "value_seconds": 1158,
-            "trend": { "delta_seconds": -204, "direction": "DOWN", "comparison_label": "vs previous period" },
-            "sparkline": [1500,1400,1350,1300,1200,1158],
-            "sub_metrics": [
-              { "label": "SLA Target", "value_seconds": 1200 },
-              { "label": "Max (Personal Loan)", "value_seconds": 2100 }
-            ]
-          },
-          "pipeline_at_risk": {
-            "unit": "currency_cr",
-            "value": 8.4,
-            "risk_threshold_percentage": 20,
-            "trend": { "delta_value": -2.2, "direction": "DOWN", "comparison_label": "vs previous period" },
-            "sparkline": [15.0,13.5,12.0,10.5,9.5,8.4],
-            "percentage_of_total_pipeline": 6.3,
-            "sub_metrics": [
-              { "label": "SLA Breached", "value": 42 },
-              { "label": "Stuck >24h", "value": 21 }
-            ]
-          }
-        },
-        "data_as_of_timestamp": "2026-03-02T12:05:00"
       }
     }
   ]
